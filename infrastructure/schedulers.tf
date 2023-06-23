@@ -1,6 +1,6 @@
 resource "google_cloud_scheduler_job" "flashback" {
   name        = "flashback"
-  schedule    = "0 * * * *"
+  schedule    = "0 0 * * *"
   region      = var.region
   description = "Starts a job to send a flashback notification."
 
