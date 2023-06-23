@@ -32,4 +32,4 @@ jobs:
         run: black . --check
 
       - name: Run tests
-        run: pytest src/messenger/ && pytest src/stock_scraper/
+        run: pytest src/flashback/
