@@ -22,7 +22,7 @@ mamba:
 #############
 
 tests:
-	echo "Not Implemented"
+	pytest src/flashback/
 
 
 ################
