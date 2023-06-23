@@ -1,0 +1,19 @@
+name: flashback
+channels:
+  - anaconda
+  - conda-forge
+dependencies:
+  - python
+  - fire
+  - black
+  - gcsfs
+  - cloudpathlib
+  - google-cloud-pubsub
+  - pylint
+  - google-auth
+  - pytest
+  - pip
+  - discord.py
+  - jupyterlab
+  - pip:
+    - discord-webhook
