@@ -15,5 +15,12 @@ dependencies:
   - pip
   - discord.py
   - jupyterlab
+  - Pillow
+  - pytesseract
+  - scikit-image
+  - matplotlib
+  - numpy
+  - opencv
+  - keras-ocr
   - pip:
     - discord-webhook
