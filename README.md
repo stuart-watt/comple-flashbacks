@@ -30,6 +30,6 @@ Receiving the images daily is fine for now, but there is so much more I want to 
 - Handwritten text recognition.
 Here I would train a OCR model to learn my handwritting and then convert the digital images to text.
 - Analysis of text.
-WHat words, phrases do I tend to use? Can I run a sentiment analysis or find trends?
+What words, phrases do I tend to use? Can I run a sentiment analysis or find trends?
 - Train a NLP model on the text.
 Can I create a model that talks like me?

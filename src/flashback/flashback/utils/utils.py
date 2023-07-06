@@ -1,5 +1,8 @@
 """Utility functions"""
 
+import datetime
+
+# pylint: disable=import-error
 from google.cloud import storage
 
 
@@ -10,7 +13,7 @@ def list_all_jpg_from_gcs(bucket: str):
     blobs = bucket.list_blobs()
     jpgs = set()
     for blob in blobs:
-        if blob.name.split(".")[-1] == "jpg":
+        if blob.name.split(".")[-1].lower() in ["jpg", "png"]:
             jpgs.add(blob.name)
     return jpgs
 
@@ -22,3 +25,14 @@ def get_jpg_from_bucket(bucket: str, file: str):
     blob = bucket.blob(file)
 
     return blob.download_as_bytes()
+
+
+def check_date_format(date_string: str):
+    """Validates that a string matches a date format of 'YYYMMDD'"""
+    try:
+        datetime.datetime.strptime(date_string, "%Y%m%d")
+        print("Date requested:", date_string)
+    except ValueError as e:
+        raise ValueError(
+            f"Invalid date format: {date_string}. Expected 'YYYMMDD' format"
+        ) from e
