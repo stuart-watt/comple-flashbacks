@@ -31,12 +31,12 @@ def main(event=None, context=None):
     else:  # Invoked via pubsub.
         event = json.loads(b64decode(event["data"]).decode("utf-8"))
 
-    date = event["date"]
+    date = event.get("date", datetime.today().strftime('%Y%m%d'))
     check_date_format(date)
 
     webhook = DiscordWebhook(url=WEBHOOK)
 
-    files = [i for i in list_all_jpg_from_gcs(BUCKET) if i[11:15] == date[4:]]  #
+    files = [i for i in list_all_jpg_from_gcs(BUCKET) if i[11:15] == date[4:]] 
 
     for file in sorted(files, key=lambda x: x.split("/")[-1]):
         try:
@@ -50,7 +50,6 @@ def main(event=None, context=None):
     # Execute
     webhook.execute()
     print("Flashback created and sent successfully!")
-    return
 
 
 ##########

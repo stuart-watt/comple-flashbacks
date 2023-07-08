@@ -6,6 +6,6 @@ resource "google_cloud_scheduler_job" "flashback" {
 
   pubsub_target {
     topic_name = google_pubsub_topic.flashback.id
-    data = base64encode(jsonencode({ "date": formatdate("YYYYMMDD", timestamp()) }))
+    data = base64encode(jsonencode({}))
   }
 }
