@@ -25,7 +25,7 @@ jobs:
           mamba-version: "*"
           use-mamba: true
 
-          activate-environment: stocks
+          activate-environment: flashback
           environment-file: environment.yml
 
       - name: Check formatting
