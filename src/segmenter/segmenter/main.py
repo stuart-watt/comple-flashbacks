@@ -1,6 +1,4 @@
-"""The main handler function which sends a stock report to discord"""
-
-# pylint --extension-pkg-whitelist=cv2
+"""The Segmentation GUI"""
 
 from time import perf_counter
 
@@ -27,7 +25,7 @@ class Segmenter:
         self.tiles = []
 
     def get_file(self):
-        """doc"""
+        """Ask the user for an image file and display the image in the TKinter GUI"""
 
         self.filename = askopenfilename()
         print(self.filename)
@@ -52,7 +50,7 @@ class Segmenter:
         self.w.config(image=self.imgtk)
 
     def segment(self):
-        """Doc"""
+        """In a new GUI window, allow the user to draw rectangles around individual words"""
 
         if self.filename is not None:
             tkmb.showinfo(
@@ -71,7 +69,7 @@ class Segmenter:
             tkmb.showerror("Error", "No image selected")
 
     def save(self):
-        """Doc"""
+        """Ask the user for a filename to save the segmented images to."""
 
         if self.tiles is not None:
             save_file = asksaveasfilename()
@@ -84,21 +82,19 @@ class Segmenter:
             tkmb.showerror("Error", "No segmenets selected!")
 
     def run(self):
-        """Doc"""
+        """Main GUI loop"""
 
         root = TK.Tk()
 
-        self.filename = None
-
-        root.title("PCC")
+        root.title("Word Segmenter")
 
         # Create the whole window
-        f1 = TK.Frame(root, bg="green", relief="ridge", bd=10, height=590, width=550)
-        f2 = TK.Frame(f1, bg="white", height=590, width=550)
+        f1 = TK.Frame(root, bg="green", relief="ridge", bd=10, height=700, width=550)
+        f2 = TK.Frame(f1, bg="white", height=700, width=550)
 
         # Create the toolbar and image window
         toolbar = TK.Frame(f2, bg="gray", height=40, width=550)
-        image_window = TK.Frame(f2, bg="white", height=550, width=550)
+        image_window = TK.Frame(f2, bg="white", height=660, width=550)
 
         for frame in (f1, f2):
             frame.pack(side=TK.TOP)
@@ -115,24 +111,24 @@ class Segmenter:
         get_image = TK.Button(
             toolbar,
             text="Select image",
-            font="Helvetica 10 bold",
-            bg="blue",
+            font="Helvetica 15 bold",
+            bg="light blue",
             command=self.get_file,
         )
 
         select_segments = TK.Button(
             toolbar,
             text="Segment Image",
-            font="Helvetica 10 bold",
-            bg="green",
+            font="Helvetica 15 bold",
+            bg="light green",
             command=self.segment,
         )
 
         save_words = TK.Button(
             toolbar,
             text="Save words",
-            font="Helvetica 10 bold",
-            bg="red",
+            font="Helvetica 15 bold",
+            bg="pink",
             command=self.save,
         )
 

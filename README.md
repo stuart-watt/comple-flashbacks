@@ -7,6 +7,7 @@ For several years I have been writing handwritten descriptions of what I get up 
 ## Part 1: Basic version
 ### Digitising
 I need to make digital copies of the diary entries. Typing up years of handwritten entries would be too tedious and time consuming. So instead, I take scans of each diary entry. An example (blurred to hide details) is shown below.
+
 ![alt text](images/example_entry.jpg)
 
 Next I crop and label each image using the date the entry corresponds to. For example `20210624.jpg`. If the handwritten entry spans multiple pages, append a letter to each (`20210624A.jpg`, `20210624B.jpg`, etc.).
@@ -22,13 +23,25 @@ This solution is deployed using Google Cloud Platform, orchestrated using Terraf
 
 ### Notifications
 I have set up a Discord channel in a private server to receive the notifications. I create a webhook for this channel and store the webhook in Google Secret Manager. The GCF has access to this and sends the diary image to the channel. For example:
+
 ![alt text](images/discord_message.jpg)
 
-## Part 2: Better version
+
+
+## Part 2: Text recognition
+### Word segmentation
+If I want to train a model to read my messy handwriting, I need to provide some labelled training data. To begin with, I will start by producing a mdel that classifies whole words from an image (as opposed to a more robust OCR model which might identify individual letters).
+
+To help with this, I added a simple TKinter GUI that allows me to segment and label individual words from my scanned pages.
+
+![alt text](images/segmenter_GUI_example.JPG)
+
+The resulting images are saved, for example:
+
+![alt text](images/words/example_0.jpg) ![alt text](images/words/example_1.jpg) ![alt text](images/words/example_2.jpg)
+
 **Coming soon!**
 Receiving the images daily is fine for now, but there is so much more I want to do with this project:
-- Handwritten text recognition.
-Here I would train a OCR model to learn my handwritting and then convert the digital images to text.
 - Analysis of text.
 What words, phrases do I tend to use? Can I run a sentiment analysis or find trends?
 - Train a NLP model on the text.
