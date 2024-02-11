@@ -1,4 +1,4 @@
-"""Doc string"""
+"""OpenCv functions for segmenting the words from an image."""
 
 import cv2
 
