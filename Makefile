@@ -43,3 +43,9 @@ export TF_VAR_secret_flashback_webhook = $(SECRET_FLASHBACK_WEBHOOK)
 terraform:
 	cd infrastructure && terraform init && terraform apply -auto-approve
 
+##################
+## Segmentation ##
+##################
+
+segment:
+	python src/segmenter/segmenter/main.py

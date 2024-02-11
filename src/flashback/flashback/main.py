@@ -10,9 +10,9 @@ import fire
 
 from google.cloud.exceptions import NotFound
 
-from discord_webhook import DiscordWebhook
-
 # pylint: disable=import-error
+from discord_webhook import DiscordWebhook  # type: ignore
+
 from utils.utils import list_all_jpg_from_gcs, get_jpg_from_bucket, check_date_format
 
 BUCKET = os.environ["BUCKET"]
