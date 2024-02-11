@@ -10,5 +10,10 @@ dependencies:
   - pylint
   - google-auth
   - pytest
-  - pip
   - discord.py
+  - pillow
+  - tk
+  - numpy
+  - pip
+  - pip:
+    - opencv-python
